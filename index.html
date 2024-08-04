@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown para o Rebaixamento do Corinthians</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('background.jpg'); /* Insira a URL da imagem */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #countdown {
+            font-size: 3em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">
+        Falta <span id="days"></span> dias <span id="hours"></span> horas <span id="minutes"></span> minutos <span id="seconds"></span> segundos para o rebaixamento do Corinthians
+    </div>
+
+    <script>
+        function countdown() {
+            const endDate = new Date('December 8, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = endDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+
+        countdown();
+        setInterval(countdown, 1000); // Atualiza a cada segundo
+    </script>
+</body>
+</html>
